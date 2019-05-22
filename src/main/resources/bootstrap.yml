@@ -1,0 +1,23 @@
+server:
+  port: 8081
+
+spring:
+  application:
+    name: service-config-server
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/jian2027/spring-cloud.git
+          username: jian2027
+          password: bm_jiang123
+          search-paths: config-list
+
+eureka:
+  instance:
+    prefer-ip-address: true  
+    #instance-id: ${spring.cloud.client.ipAddress}:${server.port} #旧版本配置
+    instance-id: ${spring.cloud.client.ip-address}:${server.port} #新版本配置
+  client:
+    service-url:
+      defaultZone: http://localhost:8082/eureka/
